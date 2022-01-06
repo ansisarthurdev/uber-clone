@@ -2,24 +2,27 @@ import React from 'react'
 import styled from 'styled-components/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+//components
+import NavOptions from '../components/NavOptions';
+import SearchInput from '../components/SearchInput';
+import UserDefaults from '../components/UserDefaults';
+
+
 const HomeScreen = () => {
     return (
         <SafeAreaView>
-            <Text>I am HomeScreen!</Text>
+            <Image 
+                style={{width: 130, height: 40, resizeMode: 'contain', marginTop: 60, marginLeft: 20}}
+                source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Uber_logo_2018.svg/2560px-Uber_logo_2018.svg.png'}}
+            />
+
+            <SearchInput />
+            <NavOptions />
+            <UserDefaults />
         </SafeAreaView>
     )
 }
 
 export default HomeScreen
 
-const Container = styled.View`
-  flex: 1;
-  background-color: white;
-  justify-content: center;
-  align-items: center;
-`;
-const Text = styled.Text`
-  font-size: 18px;
-  color: black;
-  font-weight: 500;
-`;
+const Image = styled.Image``

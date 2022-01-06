@@ -1,11 +1,13 @@
 import React from 'react'
 
 //navigation
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 const Stack = createStackNavigator();
 
 //screens
 import HomeScreen from '../screens/HomeScreen';
+import MapScreen from '../screens/MapScreen';
+import EatsScreen from '../screens/EatsScreen';
 
 const StackNavigator = () => {
     return (
@@ -15,6 +17,23 @@ const StackNavigator = () => {
                 component={HomeScreen} 
                 options={{
                     headerShown: false,
+                    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+                }}
+            />
+            <Stack.Screen 
+                name="MapScreen" 
+                component={MapScreen} 
+                options={{
+                    //headerShown: false,
+                    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+                }}
+            />
+            <Stack.Screen 
+                name="EatsScreen" 
+                component={EatsScreen} 
+                options={{
+                    //headerShown: false,
+                    cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
                 }}
             />
         </Stack.Navigator>
