@@ -1,34 +1,23 @@
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import styled from 'styled-components/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 //redux
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 
+//stacknavigator
+import StackNavigator from './navigation/StackNavigator';
+import { NavigationContainer } from '@react-navigation/native';
+
 export default function App() {
 
   return ( 
     <Provider store={store}>
+      <NavigationContainer>
       <SafeAreaProvider style={{flex: 1}}>
-        <SafeAreaView style={{flex: 1}}>
-        <Container>
-          <Text>Lets build uber</Text>
-        </Container>
-        </SafeAreaView>
+        <StackNavigator />
       </SafeAreaProvider>
+      </NavigationContainer>
     </Provider>
   )
 
 }
-
-const Container = styled.View`
-  flex: 1;
-  background-color: white;
-  justify-content: center;
-  align-items: center;
-`;
-const Text = styled.Text`
-  font-size: 18px;
-  color: black;
-  font-weight: 500;
-`;
