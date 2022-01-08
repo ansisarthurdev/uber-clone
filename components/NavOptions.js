@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components/native';
-import { FlatList, TouchableOpacity } from 'react-native';
+import { FlatList, TouchableOpacity, View } from 'react-native';
 
 import { Icon } from 'react-native-elements';
 
 //navigation
 import { useNavigation } from '@react-navigation/core';
+
+//redux
+import { useSelector } from 'react-redux';
+import { selectOrigin } from '../app/slices/navSlice';
 
 const data = [
     {
@@ -25,15 +29,27 @@ const data = [
 const NavOptions = () => {
 
     const navigation = useNavigation();
+
+    const origin = useSelector(selectOrigin);
     
+    //button opacity depending on origin state
+    const [opacity, setOpacity] = useState(.5);
+
+    useEffect(() => {
+        //change button opacity depending on origin state
+        origin ? setOpacity(1) : setOpacity(.5)
+    }, [origin])
+
     return (
         <FlatList
             data={data}
             horizontal
             style={{marginLeft: 25, marginTop: 20, marginBottom: 10}}
             renderItem={ ({item}) => (
+                <View style={{ opacity: opacity }}>
                 <TouchableOpacity style={{backgroundColor: '#d7d7d7', paddingTop: 20, paddingLeft: 10, paddingRight: 10, paddingBottom: 20, marginRight: 10}}
-                    onPress={() => {navigation.navigate(item.screen)}}
+                    onPress={() => {if(origin){navigation.navigate(item.screen)}}}
+
                 >
                     <Image style={{resizeMode: 'contain'}} source={{uri: item.image}}/>
                     <Text>{item.title}</Text>
@@ -46,15 +62,13 @@ const NavOptions = () => {
                         style={{ marginTop: 15, borderRadius: 50, width: 30, height: 30, padding: 2}}
                     />
                 </TouchableOpacity>
+                </View>
             )}
         />
     )
 }
 
 export default NavOptions
-
-const Container = styled.View`
-`
 
 const Image = styled.Image`
     height: 90px;

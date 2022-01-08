@@ -17,6 +17,7 @@ const StackNavigator = () => {
                 component={HomeScreen} 
                 options={{
                     headerShown: false,
+                    //stack slīdošā animācija
                     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
                 }}
             />
@@ -24,7 +25,7 @@ const StackNavigator = () => {
                 name="MapScreen" 
                 component={MapScreen} 
                 options={{
-                    //headerShown: false,
+                    headerShown: false,
                     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
                 }}
             />

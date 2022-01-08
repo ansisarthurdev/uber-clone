@@ -24,7 +24,7 @@ const UserDefaults = () => {
     return (
         <FlatList
             data={data}
-            style={{marginLeft: 25, marginTop: 20}}
+            style={{marginLeft: 25, marginRight: 25, marginTop: 20, borderTopWidth: 1, borderColor: '#d7d7d7'}}
             renderItem={ ({item}) => (
                 <TouchableOpacity style={{flexDirection: 'row', alignItems: 'center', marginBottom: 15}}>
                     <Icon 
@@ -48,12 +48,7 @@ const UserDefaults = () => {
 export default UserDefaults
 
 const Container = styled.View`
-margin: 10px 0 0 10px;
-`
-
-const Image = styled.Image`
-    height: 90px;
-    width: 90px;
+margin: 12px 0 0 10px;
 `
 
 const TextHeading = styled.Text`
