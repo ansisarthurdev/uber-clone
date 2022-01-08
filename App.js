@@ -1,4 +1,5 @@
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { KeyboardAvoidingView } from 'react-native';
 
 //redux
 import { Provider } from 'react-redux';
@@ -14,7 +15,9 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
       <SafeAreaProvider style={{flex: 1}}>
-        <StackNavigator />
+
+          <StackNavigator />
+
       </SafeAreaProvider>
       </NavigationContainer>
     </Provider>

@@ -7,7 +7,6 @@ import NavOptions from '../components/NavOptions';
 import SearchInput from '../components/SearchInput';
 import UserDefaults from '../components/UserDefaults';
 
-
 const HomeScreen = () => {
     return (
         <SafeAreaView>
@@ -16,7 +15,7 @@ const HomeScreen = () => {
                 source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Uber_logo_2018.svg/2560px-Uber_logo_2018.svg.png'}}
             />
 
-            <SearchInput />
+            <SearchInput/>
             <NavOptions />
             <UserDefaults />
         </SafeAreaView>

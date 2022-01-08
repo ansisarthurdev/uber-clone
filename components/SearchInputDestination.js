@@ -10,7 +10,7 @@ import axios from 'axios';
 
 //redux
 import { useSelector, useDispatch } from 'react-redux';
-import { selectOrigin, setOrigin } from '../app/slices/navSlice'; 
+import { selectDestination, setDestination } from '../app/slices/navSlice'; 
 
 const SearchInput = () => {
 
@@ -20,12 +20,12 @@ const SearchInput = () => {
     //hide search box by default
     const [searchBox, setSearchBox] = useState('none');
 
-    //origin from redux
-    const origin = useSelector(selectOrigin);
+    //destination from redux
+    const destination = useSelector(selectDestination);
 
     useEffect(() => {
         //fetch query to mapbox
-        if(query && !origin){
+        if(query && !destination){
             axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${MAPBOX_ACCESS_TOKEN}`).then(
                 res => {
                     console.log(res)
@@ -34,7 +34,7 @@ const SearchInput = () => {
                 }
             )
         } else if (!query){
-            dispatch(setOrigin(null));
+            dispatch(setDestination(null));
             setSearchBox('none');
         } else {
             setSearchBox('none');
@@ -47,17 +47,21 @@ const SearchInput = () => {
     const dispatch = useDispatch();
 
     const setLocation = (item) => {
-        dispatch(setOrigin(item));
+        dispatch(setDestination(item));
         setQuery(item.place_name)
+        //console.log(item)
     }    
     //redux end
 
     return (
         <SafeAreaView>
             <TextInput 
-                placeholder='Where From?'
+                placeholder='Where To?'
                 defaultValue={query}
                 onChangeText={debounce(text => updateQuery(text), 400)}
+                style={{
+                    backgroundColor: '#DEDDE0',
+                }}
             />
 
             <FlatList

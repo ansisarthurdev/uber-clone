@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 //components
 import Map from '../components/Map'
+import NavigationCard from '../navigation/NavigationCard';
 
 const MapScreen = () => {
     return (
@@ -12,7 +13,7 @@ const MapScreen = () => {
                 <Map />
             </MapTop>
             <MapBottom>
-                <Text>This is Map Screen Bottom!</Text>
+                <NavigationCard />
             </MapBottom>   
         </Container>
     )
@@ -21,10 +22,10 @@ const MapScreen = () => {
 export default MapScreen
 
 const MapTop = styled.View`
-height: 50%;
+height: 55%;
 `
 const MapBottom = styled.View`
-height: 50%;
+height: 45%;
 `
 const Container = styled.View``
 const Text = styled.Text``
