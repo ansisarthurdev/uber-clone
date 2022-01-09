@@ -49,8 +49,6 @@ const Map = () => {
                     dispatch(setTravelTimeInformation(data.rows[0].elements[0]))
                 }
             )
-
-
         }
 
         getTravelTime();
@@ -134,6 +132,5 @@ const styles = StyleSheet.create({
 const Container = styled.View`
 flex: 1;
 `
-const Text = styled.Text``
 
 export default Map

@@ -8,6 +8,7 @@ import SearchInput from '../components/SearchInput';
 import UserDefaults from '../components/UserDefaults';
 
 const HomeScreen = () => {
+
     return (
         <SafeAreaView>
             <Image 

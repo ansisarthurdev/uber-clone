@@ -44,7 +44,7 @@ const NavOptions = () => {
         <FlatList
             data={data}
             horizontal
-            style={{marginLeft: 25, marginTop: 20, marginBottom: 10, marginRight: 25,}}
+            style={{marginLeft: 25, marginTop: 20, marginBottom: 10, marginRight: 25}}
             renderItem={ ({item}) => (
                 <View style={{ opacity: opacity }}>
                 <TouchableOpacity style={{backgroundColor: '#d7d7d7', paddingTop: 20, paddingLeft: 10, paddingRight: 10, paddingBottom: 20, marginRight: 10}}

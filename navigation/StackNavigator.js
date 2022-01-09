@@ -33,7 +33,7 @@ const StackNavigator = () => {
                 name="EatsScreen" 
                 component={EatsScreen} 
                 options={{
-                    //headerShown: false,
+                    headerShown: false,
                     cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
                 }}
             />

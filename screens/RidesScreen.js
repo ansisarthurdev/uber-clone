@@ -11,8 +11,6 @@ import { useNavigation } from '@react-navigation/core';
 import { useSelector } from 'react-redux';
 import { selectTravelTimeInformation } from '../app/slices/navSlice';
 
-import { NumberFormat } from '../components/NumberFormat';
-
 const data = [
     {
         id:'Uber-X-123',
@@ -108,6 +106,12 @@ const RidesScreen = () => {
                 disabled={!selected}
                 style={{backgroundColor: 'black', marginLeft: 5, marginRight: 5, marginBottom: 10, padding: 10,
                     backgroundColor: `${selected ? 'black' : '#E6E6EA'}`
+                }}
+                onPress={() => {
+                    alert('Thank you for testing my Uber clone! Navigating you to start screen in 5 seconds! -ansisarthurdev')
+                    setTimeout(() => {
+                        navigation.navigate('Home');
+                    }, 5000)
                 }}
             ><Text
                 style={{color: 'white', fontSize: 17,  textAlign: 'center'}}
