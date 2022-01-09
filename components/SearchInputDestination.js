@@ -28,7 +28,7 @@ const SearchInput = () => {
         if(query && !destination){
             axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${MAPBOX_ACCESS_TOKEN}`).then(
                 res => {
-                    console.log(res)
+                    //console.log(res)
                     setQueryResults(res.data.features)
                     setSearchBox('flex');
                 }

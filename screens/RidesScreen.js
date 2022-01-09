@@ -7,6 +7,12 @@ import { TouchableOpacity, FlatList } from 'react-native';
 //navigation
 import { useNavigation } from '@react-navigation/core';
 
+//redux
+import { useSelector } from 'react-redux';
+import { selectTravelTimeInformation } from '../app/slices/navSlice';
+
+import { NumberFormat } from '../components/NumberFormat';
+
 const data = [
     {
         id:'Uber-X-123',
@@ -34,6 +40,10 @@ const RidesScreen = () => {
 
     const [selected, setSelected] = useState(null);
 
+    const travelTimeInformation = useSelector(selectTravelTimeInformation);
+
+    const SURGE_CHARGE_RATE = .948;
+
     return (
         <Container>
             <ContainerTop style={{
@@ -44,7 +54,7 @@ const RidesScreen = () => {
                 <Text style={{
                     fontSize: 18,
                     textAlign: 'center'
-                }}>Select a Ride</Text>
+                }}>Select a Ride - {travelTimeInformation?.distance.text}</Text>
 
                 <TouchableOpacity style={{
                     position: 'absolute',
@@ -83,10 +93,12 @@ const RidesScreen = () => {
 
                         <InfoContainer>
                             <Text style={{fontSize: 16, fontWeight: 'bold'}}>{item.title}</Text>
-                            <Text>Travel Time ...</Text>
+                            <Text>{travelTimeInformation?.duration.text} Travel Time</Text>
                         </InfoContainer>
 
-                        <Text style={{fontSize: 15}}>€99</Text>
+                        <Text style={{fontSize: 15}}>
+                            €{(travelTimeInformation?.duration.value * SURGE_CHARGE_RATE * item.multiplier / 100).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}
+                        </Text>
                     </TouchableOpacity>
                     </ItemContainer>
                 )}

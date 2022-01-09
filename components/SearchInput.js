@@ -28,7 +28,7 @@ const SearchInput = () => {
         if(query && !origin){
             axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${MAPBOX_ACCESS_TOKEN}`).then(
                 res => {
-                    console.log(res)
+                    //console.log(res)
                     setQueryResults(res.data.features)
                     setSearchBox('flex');
                 }
@@ -49,6 +49,7 @@ const SearchInput = () => {
     const setLocation = (item) => {
         dispatch(setOrigin(item));
         setQuery(item.place_name)
+        //console.log(item);
     }    
     //redux end
 

@@ -70,7 +70,7 @@ const DestinationScreen = () => {
                     borderRadius: 30,
                     marginRight: 20
                 }}
-                onPress={() => navigation.navigate('Rides')}
+                onPress={() => {origin && destination && navigation.navigate('Rides')}}
                 >          
                     <Icon 
                         name='car'

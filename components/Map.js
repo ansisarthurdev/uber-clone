@@ -7,8 +7,9 @@ import MapView, { Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import { GOOGLE_API_KEY } from '@env';
 
-import { useSelector } from 'react-redux';
-import { selectOrigin, selectDestination } from '../app/slices/navSlice';
+//redux
+import { useSelector, useDispatch } from 'react-redux';
+import { selectOrigin, selectDestination, setTravelTimeInformation} from '../app/slices/navSlice';
 
 import { Icon } from 'react-native-elements';
 
@@ -18,6 +19,7 @@ const Map = () => {
 
     const origin = useSelector(selectOrigin);
     const destination = useSelector(selectDestination);
+    const dispatch = useDispatch();
 
     //coordinates
     const originCoords = {latitude: origin?.center[1], longitude: origin?.center[0]};
@@ -34,6 +36,25 @@ const Map = () => {
     }, [origin, destination])
 
     const navigation = useNavigation();
+
+    useEffect(() => {
+        if(!origin || !destination) return;
+
+        const getTravelTime = async() => {
+            const URL = `https://maps.googleapis.com/maps/api/distancematrix/json?units=metric
+            &origins=${origin.place_name}&destinations=${destination.place_name}&key=${GOOGLE_API_KEY}`;
+
+            fetch(URL).then(res => res.json()).then(
+                data => {
+                    dispatch(setTravelTimeInformation(data.rows[0].elements[0]))
+                }
+            )
+
+
+        }
+
+        getTravelTime();
+    }, [GOOGLE_API_KEY, origin, destination]);
 
     return (
         <Container>
