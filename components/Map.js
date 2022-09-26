@@ -48,7 +48,7 @@ const Map = () => {
                 data => {
                     dispatch(setTravelTimeInformation(data.rows[0].elements[0]))
                 }
-            )
+            ).catch(error => console.log(error))
         }
 
         getTravelTime();

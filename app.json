@@ -25,11 +25,14 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ansisarthurdev.uberclone"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": ["@react-native-mapbox-gl/maps"]
+    "plugins": [
+      "@react-native-mapbox-gl/maps"
+    ]
   }
 }

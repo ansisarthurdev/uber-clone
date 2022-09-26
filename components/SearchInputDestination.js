@@ -32,7 +32,7 @@ const SearchInput = () => {
                     setQueryResults(res.data.features)
                     setSearchBox('flex');
                 }
-            )
+            ).catch(error => console.log(error))
         } else if (!query){
             dispatch(setDestination(null));
             setSearchBox('none');
